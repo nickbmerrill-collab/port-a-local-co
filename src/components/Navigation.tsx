@@ -18,17 +18,17 @@ export default function Navigation() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-palm-950/95 backdrop-blur-md shadow-lg shadow-palm-950/20"
+          ? "bg-navy-950/95 backdrop-blur-md shadow-lg shadow-navy-950/20"
           : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-18">
           <Link href="/" className="flex items-center gap-3 group">
-            <span className="text-gold-400 text-2xl font-display font-bold tracking-wide">
+            <span className="text-coral-400 text-2xl font-display font-bold tracking-wide">
               PORT A LOCAL
             </span>
-            <span className="text-gold-500/60 text-xs font-medium tracking-[0.2em] uppercase hidden sm:inline">
+            <span className="text-coral-500/60 text-xs font-medium tracking-[0.2em] uppercase hidden sm:inline">
               co
             </span>
           </Link>
@@ -39,7 +39,7 @@ export default function Navigation() {
               <Link
                 key={cat.slug}
                 href={`/${cat.slug}`}
-                className="px-4 py-2 rounded-lg text-sm font-medium text-sand-200 hover:text-gold-400 hover:bg-palm-800/50 transition-all duration-300"
+                className="px-4 py-2 rounded-lg text-sm font-medium text-sand-200 hover:text-coral-300 hover:bg-navy-800/50 transition-all duration-300"
               >
                 <span className="mr-1.5">{cat.icon}</span>
                 {cat.name}
@@ -50,7 +50,7 @@ export default function Navigation() {
           {/* Mobile toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 rounded-lg text-sand-300 hover:text-gold-400 hover:bg-palm-800/50 transition-colors"
+            className="md:hidden p-2 rounded-lg text-sand-300 hover:text-coral-400 hover:bg-navy-800/50 transition-colors"
             aria-label="Toggle menu"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -65,13 +65,13 @@ export default function Navigation() {
 
         {/* Mobile menu */}
         {mobileOpen && (
-          <div className="md:hidden pb-4 border-t border-gold-500/20">
+          <div className="md:hidden pb-4 border-t border-coral-500/20">
             {categories.map((cat) => (
               <Link
                 key={cat.slug}
                 href={`/${cat.slug}`}
                 onClick={() => setMobileOpen(false)}
-                className="block px-4 py-3 text-sm font-medium text-sand-200 hover:text-gold-400 hover:bg-palm-800/50 rounded-lg transition-colors"
+                className="block px-4 py-3 text-sm font-medium text-sand-200 hover:text-coral-300 hover:bg-navy-800/50 rounded-lg transition-colors"
               >
                 <span className="mr-2">{cat.icon}</span>
                 {cat.name}

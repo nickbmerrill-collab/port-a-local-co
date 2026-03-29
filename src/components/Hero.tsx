@@ -6,24 +6,24 @@ export default function Hero() {
       {/* Subtle palm pattern overlay */}
       <div className="absolute inset-0 palm-pattern opacity-30" />
 
-      {/* Gold accent line at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 gold-line" />
+      {/* Coral accent line at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 coral-line" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 pt-28 pb-20">
         <div className="max-w-3xl animate-fade-in-up">
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-gold-500/30 bg-gold-500/10 text-gold-400 text-sm font-medium tracking-wide mb-8">
-            <span className="w-1.5 h-1.5 rounded-full bg-gold-400" />
+          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-coral-500/30 bg-coral-500/10 text-coral-300 text-sm font-medium tracking-wide mb-8">
+            <span className="w-1.5 h-1.5 rounded-full bg-coral-400" />
             The Official Local Guide to Port Aransas, TX
           </div>
 
           <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-sand-50 leading-[1.1] mb-8">
             Discover{" "}
-            <span className="text-gold-400 italic">Port Aransas</span>
+            <span className="text-coral-400 italic">Port Aransas</span>
             <br />
             Like a Local
           </h1>
 
-          <p className="text-xl text-sand-300/80 leading-relaxed mb-12 max-w-2xl font-light">
+          <p className="text-xl text-navy-200/80 leading-relaxed mb-12 max-w-2xl font-light">
             Every business on Port A Local Co is vetted and approved by people who actually
             live here. No paid placements. No algorithms. Just honest recommendations
             from your neighbors on the island.
@@ -32,7 +32,7 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               href="#explore"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-xl btn-gold text-lg tracking-wide"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-xl btn-coral text-lg tracking-wide"
             >
               Explore the Island
               <svg className="ml-3 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -41,7 +41,7 @@ export default function Hero() {
             </Link>
             <Link
               href="#about"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-xl text-sand-200 font-semibold text-lg hover:text-gold-400 border border-sand-200/20 hover:border-gold-500/40 transition-all duration-300"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-xl text-sand-200 font-semibold text-lg hover:text-coral-300 border border-sand-200/20 hover:border-coral-500/40 transition-all duration-300"
             >
               Why Port A Local?
             </Link>
@@ -51,16 +51,16 @@ export default function Hero() {
         {/* Stats bar */}
         <div className="mt-20 grid grid-cols-3 gap-8 max-w-lg">
           <div>
-            <div className="text-3xl font-display font-bold text-gold-400">50+</div>
-            <div className="text-sm text-sand-400 mt-1 tracking-wide">Vetted Businesses</div>
+            <div className="text-3xl font-display font-bold text-coral-400">50+</div>
+            <div className="text-sm text-navy-300 mt-1 tracking-wide">Vetted Businesses</div>
           </div>
           <div>
-            <div className="text-3xl font-display font-bold text-palm-300">100%</div>
-            <div className="text-sm text-sand-400 mt-1 tracking-wide">Locally Approved</div>
+            <div className="text-3xl font-display font-bold text-gold-400">100%</div>
+            <div className="text-sm text-navy-300 mt-1 tracking-wide">Locally Approved</div>
           </div>
           <div>
             <div className="text-3xl font-display font-bold text-sand-300">0</div>
-            <div className="text-sm text-sand-400 mt-1 tracking-wide">Paid Placements</div>
+            <div className="text-sm text-navy-300 mt-1 tracking-wide">Paid Placements</div>
           </div>
         </div>
       </div>

@@ -2,19 +2,36 @@
 @import "tailwindcss";
 
 @theme {
-  /* The Palm Republic — Premium Coastal Palette */
-  --color-palm-950: #0a0f0d;
-  --color-palm-900: #111916;
-  --color-palm-800: #1a2620;
-  --color-palm-700: #24352d;
-  --color-palm-600: #2f4439;
-  --color-palm-500: #3d5a4c;
-  --color-palm-400: #5a7d6b;
-  --color-palm-300: #7fa393;
-  --color-palm-200: #a8c4b6;
-  --color-palm-100: #d4e3db;
-  --color-palm-50: #eef4f1;
+  /* The Palm Republic — Navy + Coral Sunset Palette
+     Colors derived from a Port Aransas sunset photograph */
 
+  /* Navy — Primary brand color */
+  --color-navy-950: #0b1120;
+  --color-navy-900: #111d35;
+  --color-navy-800: #172a4a;
+  --color-navy-700: #1e3a63;
+  --color-navy-600: #264d80;
+  --color-navy-500: #30639e;
+  --color-navy-400: #4a82ba;
+  --color-navy-300: #7aa5d0;
+  --color-navy-200: #adc7e3;
+  --color-navy-100: #d6e3f1;
+  --color-navy-50: #eef3f9;
+
+  /* Coral — Signature sunset accent */
+  --color-coral-950: #2c0e10;
+  --color-coral-900: #4d1a1e;
+  --color-coral-800: #7a2832;
+  --color-coral-700: #a83a46;
+  --color-coral-600: #d14e5b;
+  --color-coral-500: #e8656f;
+  --color-coral-400: #f08589;
+  --color-coral-300: #f5a8aa;
+  --color-coral-200: #f9cccd;
+  --color-coral-100: #fce8e8;
+  --color-coral-50: #fef4f4;
+
+  /* Gold — Warm sunset highlight */
   --color-gold-950: #1c1407;
   --color-gold-900: #382a0f;
   --color-gold-800: #5c4518;
@@ -27,6 +44,7 @@
   --color-gold-100: #faf2dc;
   --color-gold-50: #fdf9ef;
 
+  /* Sand — Warm neutral backgrounds */
   --color-sand-50: #faf8f4;
   --color-sand-100: #f5f0e6;
   --color-sand-200: #ebe0cc;
@@ -38,6 +56,7 @@
   --color-sand-800: #735734;
   --color-sand-900: #5f492e;
 
+  /* Ocean — Accent for activity/freshness */
   --color-ocean-50: #f0f9ff;
   --color-ocean-100: #dff2fe;
   --color-ocean-200: #b8e6fe;
@@ -49,13 +68,11 @@
   --color-ocean-800: #065886;
   --color-ocean-900: #0b4a6f;
 
-  --color-coral-400: #fb7185;
-  --color-coral-500: #f43f5e;
-
+  /* Seafoam — Verified/success accent */
+  --color-seafoam-50: #ecfdf5;
   --color-seafoam-400: #34d399;
   --color-seafoam-500: #10b981;
   --color-seafoam-600: #059669;
-  --color-seafoam-50: #ecfdf5;
 
   --color-sunset-400: #fb923c;
   --color-sunset-500: #f97316;
@@ -72,26 +89,26 @@ html {
 }
 
 body {
-  color: #1a2620;
+  color: #111d35;
   background-color: #faf8f4;
 }
 
-/* Tropical gradient hero */
+/* Subtle wave pattern for content sections */
 .wave-bg {
   background:
-    linear-gradient(135deg, rgba(10, 15, 13, 0.03) 0%, transparent 50%),
-    radial-gradient(ellipse at 20% 80%, rgba(212, 168, 67, 0.06) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(61, 90, 76, 0.05) 0%, transparent 50%);
+    linear-gradient(135deg, rgba(17, 29, 53, 0.02) 0%, transparent 50%),
+    radial-gradient(ellipse at 20% 80%, rgba(212, 168, 67, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(232, 101, 111, 0.03) 0%, transparent 50%);
 }
 
-/* Dark hero gradient */
+/* Dark hero gradient — Navy sunset feel */
 .hero-gradient {
   background: linear-gradient(
     165deg,
-    #0a0f0d 0%,
-    #111916 30%,
-    #1a2620 60%,
-    #24352d 100%
+    #0b1120 0%,
+    #111d35 35%,
+    #172a4a 65%,
+    #1e3a63 100%
   );
 }
 
@@ -101,9 +118,15 @@ body {
   height: 1px;
 }
 
-/* Verified badge glow */
+/* Coral accent line */
+.coral-line {
+  background: linear-gradient(90deg, transparent, #e8656f, #f08589, #e8656f, transparent);
+  height: 1px;
+}
+
+/* Verified badge glow — coral-tinged */
 .badge-glow {
-  box-shadow: 0 0 12px rgba(212, 168, 67, 0.3);
+  box-shadow: 0 0 12px rgba(232, 101, 111, 0.25);
 }
 
 /* Card hover lift */
@@ -112,8 +135,8 @@ body {
 }
 .card-hover:hover {
   transform: translateY(-6px);
-  box-shadow: 0 16px 32px rgba(10, 15, 13, 0.1);
-  border-color: #d4a843;
+  box-shadow: 0 16px 32px rgba(11, 17, 32, 0.1);
+  border-color: #e8656f;
 }
 
 /* Fade in animation */
@@ -132,20 +155,15 @@ body {
   animation: fade-in-up 0.8s ease-out forwards;
 }
 
-/* Stagger animations */
-.animate-delay-100 { animation-delay: 0.1s; }
-.animate-delay-200 { animation-delay: 0.2s; }
-.animate-delay-300 { animation-delay: 0.3s; }
-
-/* Palm leaf decorative element */
+/* Palm leaf decorative pattern */
 .palm-pattern {
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5c-2 8-8 14-16 18 8-2 16-2 22 2-4-8-4-14-6-20z' fill='%23d4a843' fill-opacity='0.03'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 10c-3 10-10 18-20 22 10-2 20-1 28 4-5-10-5-18-8-26z' fill='%23e8656f' fill-opacity='0.03'/%3E%3C/svg%3E");
 }
 
-/* Premium button styles */
+/* Premium gold button */
 .btn-gold {
   background: linear-gradient(135deg, #d4a843 0%, #e0be6a 50%, #d4a843 100%);
-  color: #0a0f0d;
+  color: #0b1120;
   font-weight: 600;
   transition: all 0.3s ease;
 }
@@ -154,16 +172,14 @@ body {
   box-shadow: 0 4px 16px rgba(212, 168, 67, 0.35);
 }
 
-/* Elegant separator */
-.separator {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+/* Coral accent button */
+.btn-coral {
+  background: linear-gradient(135deg, #e8656f 0%, #f08589 50%, #e8656f 100%);
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
-.separator::before,
-.separator::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #d4a843, transparent);
+.btn-coral:hover {
+  background: linear-gradient(135deg, #f08589 0%, #f5a8aa 50%, #f08589 100%);
+  box-shadow: 0 4px 16px rgba(232, 101, 111, 0.35);
 }

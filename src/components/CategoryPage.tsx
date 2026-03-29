@@ -33,7 +33,7 @@ export default function CategoryPage({
 
       {/* Header */}
       <section className="pt-28 pb-14 hero-gradient relative">
-        <div className="absolute bottom-0 left-0 right-0 gold-line" />
+        <div className="absolute bottom-0 left-0 right-0 coral-line" />
         <div className="absolute inset-0 palm-pattern opacity-15" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
@@ -43,7 +43,7 @@ export default function CategoryPage({
               {category.name}
             </h1>
           </div>
-          <p className="text-lg text-sand-400 mt-2 mb-8 max-w-2xl font-light">
+          <p className="text-lg text-navy-200 mt-2 mb-8 max-w-2xl font-light">
             {category.description}
           </p>
 
@@ -55,7 +55,7 @@ export default function CategoryPage({
             <Badge size="lg" />
           </div>
 
-          <p className="text-sm text-sand-500 mt-4">
+          <p className="text-sm text-navy-300 mt-4">
             {filtered.length} vetted {filtered.length === 1 ? "business" : "businesses"}
           </p>
         </div>
@@ -72,7 +72,7 @@ export default function CategoryPage({
             </div>
           ) : (
             <div className="text-center py-16">
-              <p className="text-lg text-palm-300">
+              <p className="text-lg text-navy-300">
                 No businesses match &ldquo;{query}&rdquo;
               </p>
             </div>
