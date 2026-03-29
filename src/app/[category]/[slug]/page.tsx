@@ -71,17 +71,144 @@ export default async function BusinessDetailPage({
           {/* Content Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Main content */}
-            <div className="lg:col-span-2">
+            <div className="lg:col-span-2 space-y-6">
+              {/* About */}
               <div className="rounded-2xl bg-white border border-sand-200 p-8">
                 <h2 className="text-xl font-bold text-slate-800 mb-4">About</h2>
                 <p className="text-slate-600 leading-relaxed">
                   {business.description}
                 </p>
               </div>
+
+              {/* Hours of Operation */}
+              {business.hoursOfOperation && (
+                <div className="rounded-2xl bg-white border border-sand-200 p-8">
+                  <h2 className="text-xl font-bold text-slate-800 mb-4">Hours of Operation</h2>
+                  <div className="space-y-2">
+                    {Object.entries(business.hoursOfOperation).map(([day, hours]) => (
+                      <div key={day} className="flex justify-between items-center py-1.5 border-b border-sand-100 last:border-0">
+                        <span className="text-sm font-medium text-slate-700">{day}</span>
+                        <span className={`text-sm ${hours === "Closed" ? "text-red-500 font-medium" : "text-slate-500"}`}>
+                          {hours}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Menu */}
+              {business.menu && business.menu.length > 0 && (
+                <div className="rounded-2xl bg-white border border-sand-200 p-8">
+                  <h2 className="text-xl font-bold text-slate-800 mb-6">Menu</h2>
+                  <div className="space-y-8">
+                    {business.menu.map((section) => (
+                      <div key={section.section}>
+                        <h3 className="text-lg font-semibold text-ocean-700 mb-3 pb-2 border-b border-ocean-100">
+                          {section.section}
+                        </h3>
+                        <div className="space-y-3">
+                          {section.items.map((item) => (
+                            <div key={item.name} className="flex justify-between items-start gap-4">
+                              <div>
+                                <p className="text-sm font-medium text-slate-800">{item.name}</p>
+                                {item.description && (
+                                  <p className="text-xs text-slate-500 mt-0.5">{item.description}</p>
+                                )}
+                              </div>
+                              {item.price && (
+                                <span className="text-sm font-medium text-sunset-600 whitespace-nowrap">
+                                  {item.price}
+                                </span>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Schedule / Cruises / Tours */}
+              {business.schedule && business.schedule.length > 0 && (
+                <div className="rounded-2xl bg-white border border-sand-200 p-8">
+                  <h2 className="text-xl font-bold text-slate-800 mb-6">Schedule & Pricing</h2>
+                  <div className="space-y-6">
+                    {business.schedule.map((entry) => (
+                      <div key={entry.name} className="p-4 rounded-xl bg-ocean-50 border border-ocean-100">
+                        <h3 className="font-semibold text-slate-800 mb-2">{entry.name}</h3>
+                        {entry.description && (
+                          <p className="text-sm text-slate-600 mb-3">{entry.description}</p>
+                        )}
+                        <div className="flex flex-wrap gap-2 mb-2">
+                          {entry.times.map((time) => (
+                            <span
+                              key={time}
+                              className="px-3 py-1 rounded-full bg-white text-ocean-700 text-xs font-medium border border-ocean-200"
+                            >
+                              {time}
+                            </span>
+                          ))}
+                        </div>
+                        {entry.price && (
+                          <p className="text-sm font-medium text-sunset-600 mt-2">{entry.price}</p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Rentals */}
+              {business.rentals && business.rentals.length > 0 && (
+                <div className="rounded-2xl bg-white border border-sand-200 p-8">
+                  <h2 className="text-xl font-bold text-slate-800 mb-6">Rental Rates</h2>
+                  <div className="space-y-3">
+                    {business.rentals.map((rental) => (
+                      <div key={rental.name} className="flex justify-between items-center p-3 rounded-lg bg-sand-50 border border-sand-100">
+                        <div>
+                          <p className="text-sm font-medium text-slate-800">{rental.name}</p>
+                          <p className="text-xs text-slate-500">{rental.duration}</p>
+                          {rental.description && (
+                            <p className="text-xs text-slate-400 mt-0.5">{rental.description}</p>
+                          )}
+                        </div>
+                        <span className="text-sm font-semibold text-ocean-700">{rental.price}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Amenities */}
+              {business.amenities && business.amenities.length > 0 && (
+                <div className="rounded-2xl bg-white border border-sand-200 p-8">
+                  <h2 className="text-xl font-bold text-slate-800 mb-4">Amenities</h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    {business.amenities.map((amenity) => (
+                      <div key={amenity} className="flex items-center gap-2">
+                        <svg className="w-4 h-4 text-seafoam-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span className="text-sm text-slate-600">{amenity}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Sidebar */}
             <div className="space-y-6">
+              {/* Verified Partner Badge */}
+              {business.verifiedPartner && (
+                <div className="rounded-2xl bg-seafoam-50 border border-seafoam-200 p-4 text-center">
+                  <p className="text-sm font-bold text-seafoam-800">Verified Partner</p>
+                  <p className="text-xs text-seafoam-600 mt-1">Official Port A Local partner</p>
+                </div>
+              )}
+
               {/* Contact Card */}
               <div className="rounded-2xl bg-white border border-sand-200 p-6">
                 <h3 className="font-bold text-slate-800 mb-4">Details</h3>
@@ -133,6 +260,18 @@ export default async function BusinessDetailPage({
                         >
                           Visit Website
                         </a>
+                      </div>
+                    </div>
+                  )}
+
+                  {business.priceRange && (
+                    <div className="flex items-start gap-3">
+                      <svg className="w-5 h-5 text-ocean-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <div>
+                        <p className="text-sm font-medium text-slate-700">Price Range</p>
+                        <p className="text-sm text-slate-500">{business.priceRange}</p>
                       </div>
                     </div>
                   )}
