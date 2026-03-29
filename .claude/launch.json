@@ -5,6 +5,7 @@
       "name": "port-a-local",
       "runtimeExecutable": "npx",
       "runtimeArgs": ["next", "dev", "--port", "3001"],
+      "env": { "TURBOPACK": "0" },
       "port": 3001
     }
   ]
