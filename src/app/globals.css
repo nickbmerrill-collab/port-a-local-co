@@ -1,42 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  /* Coastal Color Palette */
-  --color-ocean-50: #eff8ff;
-  --color-ocean-100: #dbeffe;
-  --color-ocean-200: #bee3fe;
-  --color-ocean-300: #91d3fd;
-  --color-ocean-400: #5dbbfa;
-  --color-ocean-500: #389df6;
-  --color-ocean-600: #2280eb;
-  --color-ocean-700: #1a69d8;
-  --color-ocean-800: #1b55af;
-  --color-ocean-900: #1c498a;
+  /* The Palm Republic — Navy + Coral Sunset Palette
+     Colors derived from a Port Aransas sunset photograph */
 
-  --color-sand-50: #fdfaf5;
-  --color-sand-100: #faf3e6;
-  --color-sand-200: #f3e4c7;
-  --color-sand-300: #ebd1a0;
-  --color-sand-400: #e0b56e;
-  --color-sand-500: #d7a04e;
-  --color-sand-600: #c98a3d;
-  --color-sand-700: #a76d34;
-  --color-sand-800: #875831;
-  --color-sand-900: #6e492b;
+  /* Navy — Primary brand color */
+  --color-navy-950: #0b1120;
+  --color-navy-900: #111d35;
+  --color-navy-800: #172a4a;
+  --color-navy-700: #1e3a63;
+  --color-navy-600: #264d80;
+  --color-navy-500: #30639e;
+  --color-navy-400: #4a82ba;
+  --color-navy-300: #7aa5d0;
+  --color-navy-200: #adc7e3;
+  --color-navy-100: #d6e3f1;
+  --color-navy-50: #eef3f9;
+
+  /* Coral — Signature sunset accent */
+  --color-coral-950: #2c0e10;
+  --color-coral-900: #4d1a1e;
+  --color-coral-800: #7a2832;
+  --color-coral-700: #a83a46;
+  --color-coral-600: #d14e5b;
+  --color-coral-500: #e8656f;
+  --color-coral-400: #f08589;
+  --color-coral-300: #f5a8aa;
+  --color-coral-200: #f9cccd;
+  --color-coral-100: #fce8e8;
+  --color-coral-50: #fef4f4;
+
+  /* Gold — Warm sunset highlight */
+  --color-gold-950: #1c1407;
+  --color-gold-900: #382a0f;
+  --color-gold-800: #5c4518;
+  --color-gold-700: #8a6823;
+  --color-gold-600: #b8912f;
+  --color-gold-500: #d4a843;
+  --color-gold-400: #e0be6a;
+  --color-gold-300: #ebd492;
+  --color-gold-200: #f3e5b8;
+  --color-gold-100: #faf2dc;
+  --color-gold-50: #fdf9ef;
+
+  /* Sand — Warm neutral backgrounds */
+  --color-sand-50: #faf8f4;
+  --color-sand-100: #f5f0e6;
+  --color-sand-200: #ebe0cc;
+  --color-sand-300: #decdab;
+  --color-sand-400: #ccb482;
+  --color-sand-500: #c09e63;
+  --color-sand-600: #a88549;
+  --color-sand-700: #8c6b3a;
+  --color-sand-800: #735734;
+  --color-sand-900: #5f492e;
+
+  /* Ocean — Accent for activity/freshness */
+  --color-ocean-50: #f0f9ff;
+  --color-ocean-100: #dff2fe;
+  --color-ocean-200: #b8e6fe;
+  --color-ocean-300: #7ad4fd;
+  --color-ocean-400: #34bef9;
+  --color-ocean-500: #0aa5ea;
+  --color-ocean-600: #0084c8;
+  --color-ocean-700: #0169a2;
+  --color-ocean-800: #065886;
+  --color-ocean-900: #0b4a6f;
+
+  /* Seafoam — Verified/success accent */
+  --color-seafoam-50: #ecfdf5;
+  --color-seafoam-400: #34d399;
+  --color-seafoam-500: #10b981;
+  --color-seafoam-600: #059669;
 
   --color-sunset-400: #fb923c;
   --color-sunset-500: #f97316;
   --color-sunset-600: #ea580c;
 
-  --color-seafoam-400: #34d399;
-  --color-seafoam-500: #10b981;
-  --color-seafoam-600: #059669;
-
-  --color-coral-400: #fb7185;
-  --color-coral-500: #f43f5e;
-
   /* Fonts */
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
 }
 
 /* Base styles */
@@ -45,36 +89,61 @@ html {
 }
 
 body {
-  color: #1e293b;
-  background-color: #fdfaf5;
+  color: #111d35;
+  background-color: #faf8f4;
 }
 
-/* Subtle wave pattern for hero sections */
+/* Subtle wave pattern for content sections */
 .wave-bg {
-  background-image:
-    radial-gradient(ellipse at 20% 50%, rgba(56, 157, 246, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 50%, rgba(16, 185, 129, 0.06) 0%, transparent 50%);
+  background:
+    linear-gradient(135deg, rgba(17, 29, 53, 0.02) 0%, transparent 50%),
+    radial-gradient(ellipse at 20% 80%, rgba(212, 168, 67, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(232, 101, 111, 0.03) 0%, transparent 50%);
 }
 
-/* Verified badge glow */
+/* Dark hero gradient — Navy sunset feel */
+.hero-gradient {
+  background: linear-gradient(
+    165deg,
+    #0b1120 0%,
+    #111d35 35%,
+    #172a4a 65%,
+    #1e3a63 100%
+  );
+}
+
+/* Gold shimmer accent line */
+.gold-line {
+  background: linear-gradient(90deg, transparent, #d4a843, #e0be6a, #d4a843, transparent);
+  height: 1px;
+}
+
+/* Coral accent line */
+.coral-line {
+  background: linear-gradient(90deg, transparent, #e8656f, #f08589, #e8656f, transparent);
+  height: 1px;
+}
+
+/* Verified badge glow — coral-tinged */
 .badge-glow {
-  box-shadow: 0 0 12px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 0 12px rgba(232, 101, 111, 0.25);
 }
 
 /* Card hover lift */
 .card-hover {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 .card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(11, 17, 32, 0.1);
+  border-color: #e8656f;
 }
 
 /* Fade in animation */
 @keyframes fade-in-up {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(24px);
   }
   to {
     opacity: 1;
@@ -83,5 +152,34 @@ body {
 }
 
 .animate-fade-in-up {
-  animation: fade-in-up 0.6s ease-out forwards;
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+/* Palm leaf decorative pattern */
+.palm-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 10c-3 10-10 18-20 22 10-2 20-1 28 4-5-10-5-18-8-26z' fill='%23e8656f' fill-opacity='0.03'/%3E%3C/svg%3E");
+}
+
+/* Premium gold button */
+.btn-gold {
+  background: linear-gradient(135deg, #d4a843 0%, #e0be6a 50%, #d4a843 100%);
+  color: #0b1120;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.btn-gold:hover {
+  background: linear-gradient(135deg, #e0be6a 0%, #ebd492 50%, #e0be6a 100%);
+  box-shadow: 0 4px 16px rgba(212, 168, 67, 0.35);
+}
+
+/* Coral accent button */
+.btn-coral {
+  background: linear-gradient(135deg, #e8656f 0%, #f08589 50%, #e8656f 100%);
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.btn-coral:hover {
+  background: linear-gradient(135deg, #f08589 0%, #f5a8aa 50%, #f08589 100%);
+  box-shadow: 0 4px 16px rgba(232, 101, 111, 0.35);
 }
