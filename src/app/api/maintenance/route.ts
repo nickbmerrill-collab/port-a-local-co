@@ -1,0 +1,122 @@
+import { NextRequest, NextResponse } from "next/server";
+
+const JOHN_PHONE = process.env.JOHN_BROWN_PHONE || "(361) 455-8606";
+const JOHN_EMAIL = process.env.JOHN_BROWN_EMAIL || "";
+const TWILIO_SID = process.env.TWILIO_ACCOUNT_SID || "";
+const TWILIO_TOKEN = process.env.TWILIO_AUTH_TOKEN || "";
+const TWILIO_FROM = process.env.TWILIO_PHONE_NUMBER || "";
+const RESEND_KEY = process.env.RESEND_API_KEY || "";
+
+function urgencyLabel(u: string) {
+  if (u === "emergency") return "🚨 EMERGENCY — ASAP";
+  if (u === "urgent") return "⚡ URGENT — Within 48 hrs";
+  return "📋 Routine — Within a week";
+}
+
+async function sendSMS(to: string, body: string) {
+  if (!TWILIO_SID || !TWILIO_TOKEN || !TWILIO_FROM) {
+    console.log("[SMS] Twilio not configured — would send to", to, ":", body);
+    return;
+  }
+  const toClean = to.replace(/\D/g, "");
+  const url = `https://api.twilio.com/2010-04-01/Accounts/${TWILIO_SID}/Messages.json`;
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      Authorization: "Basic " + Buffer.from(`${TWILIO_SID}:${TWILIO_TOKEN}`).toString("base64"),
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: new URLSearchParams({
+      From: TWILIO_FROM,
+      To: `+1${toClean}`,
+      Body: body,
+    }),
+  });
+  if (!res.ok) {
+    const err = await res.text();
+    console.error("[SMS] Twilio error:", err);
+  }
+}
+
+async function sendEmail(to: string, subject: string, html: string) {
+  if (!RESEND_KEY) {
+    console.log("[Email] Resend not configured — would send to", to, subject);
+    return;
+  }
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${RESEND_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from: "Port A Local <noreply@portalocal.com>",
+      to,
+      subject,
+      html,
+    }),
+  });
+  if (!res.ok) {
+    const err = await res.text();
+    console.error("[Email] Resend error:", err);
+  }
+}
+
+export async function POST(req: NextRequest) {
+  const body = await req.json();
+  const { name, phone, email, address, serviceType, description, urgency, contactPref } = body;
+
+  if (!name || !phone || !email || !address || !serviceType || !description) {
+    return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+  }
+
+  const urgencyText = urgencyLabel(urgency);
+
+  // --- SMS to John Brown ---
+  const smsBody = `PORT A LOCAL — New Maintenance Request\n${urgencyText}\n\nFrom: ${name}\nPhone: ${phone}\nAddress: ${address}\nService: ${serviceType}\n\n"${description.slice(0, 120)}${description.length > 120 ? "..." : ""}"\n\nReply or call customer directly.`;
+
+  // --- Email to John Brown ---
+  const vendorHtml = `
+    <h2>New Maintenance Request — Port A Local</h2>
+    <p><strong>Urgency:</strong> ${urgencyText}</p>
+    <hr/>
+    <p><strong>Customer:</strong> ${name}</p>
+    <p><strong>Phone:</strong> <a href="tel:${phone}">${phone}</a></p>
+    <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+    <p><strong>Preferred Contact:</strong> ${contactPref}</p>
+    <hr/>
+    <p><strong>Property Address:</strong> ${address}</p>
+    <p><strong>Service Type:</strong> ${serviceType}</p>
+    <p><strong>Description:</strong></p>
+    <p style="background:#f5f5f5;padding:12px;border-radius:8px;">${description}</p>
+    <hr/>
+    <p style="color:#888;font-size:12px;">Submitted via Port A Local — portalocal.com</p>
+  `;
+
+  // --- Confirmation email to customer ---
+  const customerHtml = `
+    <h2>We received your maintenance request!</h2>
+    <p>Hi ${name},</p>
+    <p>Thanks for submitting a maintenance request through Port A Local. We've notified our maintenance team and they'll reach out to you shortly.</p>
+    <p><strong>Your request summary:</strong></p>
+    <ul>
+      <li><strong>Service:</strong> ${serviceType}</li>
+      <li><strong>Property:</strong> ${address}</li>
+      <li><strong>Urgency:</strong> ${urgencyText}</li>
+    </ul>
+    <p>Need immediate assistance? Call John Brown directly at <a href="tel:3614558606">(361) 455-8606</a>.</p>
+    <br/>
+    <p>— Port A Local Team</p>
+  `;
+
+  // Fire all three in parallel
+  await Promise.allSettled([
+    sendSMS(JOHN_PHONE, smsBody),
+    JOHN_EMAIL ? sendEmail(JOHN_EMAIL, `[${urgency.toUpperCase()}] Maintenance Request — ${name} — ${serviceType}`, vendorHtml) : Promise.resolve(),
+    sendEmail(email, "We received your maintenance request — Port A Local", customerHtml),
+  ]);
+
+  console.log(`[Maintenance] New request from ${name} (${phone}) — ${serviceType} — ${urgency}`);
+
+  return NextResponse.json({ success: true });
+}

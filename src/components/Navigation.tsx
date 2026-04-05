@@ -45,6 +45,12 @@ export default function Navigation() {
                 {cat.name}
               </Link>
             ))}
+            <Link
+              href="/maintenance"
+              className="ml-2 px-4 py-2 rounded-lg text-sm font-medium bg-coral-500/20 text-coral-300 hover:bg-coral-500/30 transition-all duration-300 border border-coral-500/30"
+            >
+              🔧 Maintenance
+            </Link>
           </div>
 
           {/* Mobile toggle */}
