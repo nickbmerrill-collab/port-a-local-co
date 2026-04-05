@@ -18,8 +18,12 @@ async function sendSMS(to: string, body: string) {
     console.log("[SMS] Twilio not configured — would send to", to, ":", body);
     return;
   }
-  const toClean = to.replace(/\D/g, "");
+  const toClean = to.replace(/\D/g, "").replace(/^1/, ""); // strip leading 1 if present
   const toFormatted = `+1${toClean}`;
+  if (toClean.length !== 10) {
+    console.error(`[SMS] Invalid phone number: ${to} → ${toFormatted}`);
+    return;
+  }
   const url = `https://api.twilio.com/2010-04-01/Accounts/${TWILIO_SID}/Messages.json`;
   console.log(`[SMS] Sending to ${toFormatted} from ${TWILIO_FROM}`);
   const res = await fetch(url, {
@@ -116,6 +120,8 @@ export async function POST(req: NextRequest) {
 
   // SMS confirmation to customer
   const customerSMS = `Port A Local: We received your maintenance request for "${serviceType}" at ${address}. Our team is reviewing it and will be in touch shortly.`;
+
+  console.log(`[Maintenance] Customer phone raw: "${phone}" | John phone: "${JOHN_PHONE}"`);
 
   // Fire all in parallel — always send both email AND SMS to customer
   await Promise.allSettled([
