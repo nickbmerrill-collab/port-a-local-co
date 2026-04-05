@@ -1,0 +1,208 @@
+{
+  "main": {
+    "id": "57d0b39afeea4458",
+    "type": "split",
+    "children": [
+      {
+        "id": "bacc646d5d82a7f0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "34b9e9a0379b00ed",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "897b965d1a60c163",
+    "type": "split",
+    "children": [
+      {
+        "id": "d8afa6aca821d970",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "564aa55bfb000b69",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "a7ed1cae4204819d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "31e05d5ab3abe3e5",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "8f145ba87d4bfec7",
+    "type": "split",
+    "children": [
+      {
+        "id": "1b1320ecf3a14344",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3d717d3675aa6cd3",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "57256f02e48fb499",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "524329a534415b19",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "f0ba89fe57e22850",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "258ea7463cf508f4",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "564aa55bfb000b69",
+  "lastOpenFiles": [
+    "Business Directory/Eat/Bron's Backyard.md",
+    "Business Directory/Eat/Coffee Waves.md",
+    "Business Directory/Eat/Bernie's Beach House.md",
+    "Business Directory/Eat/Stingray's.md",
+    "Business Directory/Eat/Aloha Acai.md",
+    "Business Directory/Eat/Bayou Bistro.md",
+    "Business Directory/Eat/Wok On.md",
+    "Business Directory/Eat/Vibe Taco.md",
+    "Business Directory/Eat/Mrs. K's.md",
+    "Business Directory/Eat/Port A Poke.md",
+    "Business Directory/Eat/Island Bakery.md",
+    "Business Directory/Eat/The Island Cafe.md",
+    "Business Directory/Eat/Coach's Island Grill.md",
+    "Business Directory/Eat/Trout Street Bar & Grill.md",
+    "Business Directory/Eat/The Gaff Pizza.md",
+    "Business Directory/Eat/Cancun Mexican Restaurant.md",
+    "Business Directory/Eat/Taqueria San Juan.md",
+    "Business Directory/Eat/Castaway's Bar & Grill.md",
+    "Business Directory/Eat/The Phoenix Restaurant & Bar.md",
+    "Business Directory/Eat/KC's Oyster Shack.md",
+    "Business Directory/Eat/Drifter's Deli.md",
+    "Business Directory/Eat/Jackfish.md",
+    "Business Directory/Eat/MacDaddy's Family Kitchen.md",
+    "Business Directory/Eat/Jay's Seafood & Spaghetti Works.md",
+    "Business Directory/Eat/BlueWater Cowboy Saloon & Mercantile.md",
+    "Business Directory/Drink/FINS Grill & Icehouse.md"
+  ]
+}
