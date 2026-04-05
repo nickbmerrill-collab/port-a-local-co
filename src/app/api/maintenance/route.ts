@@ -50,7 +50,7 @@ async function sendEmail(to: string, subject: string, html: string) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: "Port A Local <noreply@portalocal.com>",
+      from: "Port A Local <onboarding@resend.dev>",
       to,
       subject,
       html,
