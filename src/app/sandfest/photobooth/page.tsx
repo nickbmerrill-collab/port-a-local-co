@@ -200,6 +200,7 @@ export default function PhotoBoothPage() {
         {stage === "captured" && captureUrl && (
           <div className="text-center">
             <div className="rounded-2xl overflow-hidden border-2 border-sand-200 shadow-md mb-6 inline-block">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={captureUrl}
                 alt="Your photo"
@@ -255,6 +256,7 @@ export default function PhotoBoothPage() {
                     Original
                   </p>
                   <div className="rounded-xl overflow-hidden border border-sand-200 shadow-sm">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={captureUrl}
                       alt="Original photo"
@@ -268,6 +270,7 @@ export default function PhotoBoothPage() {
                   Sand Art
                 </p>
                 <div className="rounded-xl overflow-hidden border-2 border-orange-400 shadow-md">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={generatedUrl}
                     alt="AI sand art"
@@ -278,7 +281,7 @@ export default function PhotoBoothPage() {
             </div>
 
             <p className="text-xs text-navy-300 mb-4">
-              Port A Local Co \u00d7 SandFest 2026
+              Port A Local Co × SandFest 2026
             </p>
 
             <div className="flex gap-3 justify-center flex-wrap">
@@ -311,6 +314,7 @@ export default function PhotoBoothPage() {
                   key={item.id}
                   className="rounded-xl overflow-hidden border border-sand-200 shadow-sm group"
                 >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={`${API}${item.generated_url}`}
                     alt={`Sand art - ${item.style}`}
@@ -328,7 +332,7 @@ export default function PhotoBoothPage() {
             href="/sandfest"
             className="text-sm text-orange-600 hover:text-orange-500 font-medium transition-colors"
           >
-            \u2190 Back to SandFest
+            ← Back to SandFest
           </Link>
         </div>
       </div>
