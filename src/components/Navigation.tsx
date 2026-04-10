@@ -45,6 +45,13 @@ export default function Navigation() {
                 {cat.name}
               </Link>
             ))}
+            <Link
+              href="/sandfest"
+              className="ml-2 px-4 py-2 rounded-lg text-sm font-bold text-amber-300 hover:text-amber-200 bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/30 transition-all duration-300 flex items-center gap-1.5"
+            >
+              <span className="text-base">🏖️</span>
+              SandFest
+            </Link>
           </div>
 
           {/* Mobile toggle */}
@@ -77,6 +84,14 @@ export default function Navigation() {
                 {cat.name}
               </Link>
             ))}
+            <Link
+              href="/sandfest"
+              onClick={() => setMobileOpen(false)}
+              className="block px-4 py-3 text-sm font-bold text-amber-300 hover:text-amber-200 bg-amber-500/10 rounded-lg transition-colors mt-1"
+            >
+              <span className="mr-2">🏖️</span>
+              SandFest 2026
+            </Link>
           </div>
         )}
       </div>
