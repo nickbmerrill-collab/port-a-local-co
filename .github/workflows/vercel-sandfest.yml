@@ -1,0 +1,51 @@
+name: Deploy SandFest to Vercel
+
+on:
+  push:
+    branches:
+      - claude/sandfest-festival-integration-8bH9M
+      - main
+  workflow_dispatch:
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel@latest
+
+      - name: Pull Vercel environment
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build
+        env:
+          NEXT_PUBLIC_SANDFEST_API_URL: ${{ vars.NEXT_PUBLIC_SANDFEST_API_URL || 'https://sandfest-api.heyelab.com' }}
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy
+        id: deploy
+        run: |
+          url=$(vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }})
+          echo "url=$url" >> $GITHUB_OUTPUT
+          echo "::notice title=Deployed::$url"
+
+      - name: Summary
+        run: |
+          echo "## 🏖️ SandFest Deployed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**URL:** ${{ steps.deploy.outputs.url }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Pages:**" >> $GITHUB_STEP_SUMMARY
+          echo "- [/sandfest](${{ steps.deploy.outputs.url }}/sandfest)" >> $GITHUB_STEP_SUMMARY
+          echo "- [/sandfest/live](${{ steps.deploy.outputs.url }}/sandfest/live)" >> $GITHUB_STEP_SUMMARY
+          echo "- [/sandfest/photobooth](${{ steps.deploy.outputs.url }}/sandfest/photobooth)" >> $GITHUB_STEP_SUMMARY
