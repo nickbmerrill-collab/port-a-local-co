@@ -226,7 +226,7 @@ export default function SandfestPage() {
               className="group rounded-2xl bg-white border border-sand-200 p-8 hover:shadow-lg transition-shadow"
             >
               <div className="flex items-center gap-3 mb-3">
-                <span className="text-2xl">\uD83D\uDCF8</span>
+                <span className="text-2xl">📸</span>
                 <h3 className="font-display font-bold text-navy-900 text-xl">
                   AI Photo Booth
                 </h3>
