@@ -17,47 +17,55 @@ export default function Navigation() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-navy-950/95 backdrop-blur-md shadow-lg shadow-navy-950/20"
-          : "bg-transparent"
+        scrolled ? "glass-nav" : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between h-18">
-          <Link href="/" className="flex items-center gap-3 group">
-            <span className="text-coral-400 text-2xl font-display font-bold tracking-wide">
-              PORT A LOCAL
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+        <div className="flex items-center justify-between h-20">
+          {/* Wordmark */}
+          <Link href="/" className="flex items-baseline gap-2 group">
+            <span className="headline-serif text-2xl sm:text-[1.65rem] text-navy-900">
+              Port A Local
             </span>
-            <span className="text-coral-500/60 text-xs font-medium tracking-[0.2em] uppercase hidden sm:inline">
-              co
+            <span className="eyebrow text-coral-600 text-[0.65rem] pb-0.5">
+              Co.
             </span>
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden md:flex items-center gap-8">
             {categories.map((cat) => (
               <Link
                 key={cat.slug}
                 href={`/${cat.slug}`}
-                className="px-4 py-2 rounded-lg text-sm font-medium text-sand-200 hover:text-coral-300 hover:bg-navy-800/50 transition-all duration-300"
+                className="group relative text-sm font-medium tracking-wide text-navy-900/80 hover:text-coral-600 transition-colors"
               >
-                <span className="mr-1.5">{cat.icon}</span>
                 {cat.name}
+                <span className="absolute left-0 -bottom-1.5 h-px w-0 bg-coral-600 transition-all duration-300 group-hover:w-full" />
               </Link>
             ))}
+            <Link
+              href="#explore"
+              className="ml-2 inline-flex items-center gap-2 btn-terracotta px-5 py-2.5 rounded-full text-xs"
+            >
+              Explore
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
           </div>
 
           {/* Mobile toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 rounded-lg text-sand-300 hover:text-coral-400 hover:bg-navy-800/50 transition-colors"
+            className="md:hidden p-2 rounded-lg text-navy-900 hover:text-coral-600 transition-colors"
             aria-label="Toggle menu"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {mobileOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M6 18L18 6M6 6l12 12" />
               ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M4 6h16M4 12h16M4 18h16" />
               )}
             </svg>
           </button>
@@ -65,16 +73,18 @@ export default function Navigation() {
 
         {/* Mobile menu */}
         {mobileOpen && (
-          <div className="md:hidden pb-4 border-t border-coral-500/20">
+          <div className="md:hidden pb-6 pt-2 border-t border-navy-900/10">
             {categories.map((cat) => (
               <Link
                 key={cat.slug}
                 href={`/${cat.slug}`}
                 onClick={() => setMobileOpen(false)}
-                className="block px-4 py-3 text-sm font-medium text-sand-200 hover:text-coral-300 hover:bg-navy-800/50 rounded-lg transition-colors"
+                className="block px-2 py-3 text-base font-medium text-navy-900 hover:text-coral-600 border-b border-navy-900/5 last:border-0 transition-colors"
               >
-                <span className="mr-2">{cat.icon}</span>
-                {cat.name}
+                <span className="headline-serif text-xl mr-3">{cat.name}</span>
+                <span className="text-xs text-navy-900/50 tracking-wide">
+                  {cat.description}
+                </span>
               </Link>
             ))}
           </div>
